@@ -66,7 +66,7 @@ public class ArcusClient extends DB {
 
   protected net.spy.memcached.ArcusClient createArcusClient() {
     return net.spy.memcached.ArcusClient
-        .createArcusClient("localhost:2181", "test");
+        .createArcusClient("ncp-4c4-001:2181", "long-running-community");
   }
 
   @Override
