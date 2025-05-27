@@ -57,6 +57,7 @@ DATABASES = {
     "accumulo1.9"     : "site.ycsb.db.accumulo.AccumuloClient",
     "aerospike"    : "site.ycsb.db.AerospikeClient",
     "arangodb"     : "site.ycsb.db.arangodb.ArangoDBClient",
+    "arcus"     : "site.ycsb.db.ArcusClient",
     "arangodb3"     : "site.ycsb.db.arangodb.ArangoDBClient",
     "asynchbase"   : "site.ycsb.db.AsyncHBaseClient",
     "azurecosmos" : "site.ycsb.db.AzureCosmosClient",
