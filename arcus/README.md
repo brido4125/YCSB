@@ -54,7 +54,7 @@ Run the workload test:
 ## 5. memcached Connection Parameters
 
 A sample configuration is provided in
-[`conf/memcached.properties`](conf/memcached.properties).
+[`conf/memcached.properties`](conf/arcus.properties).
 
 ### Required params
 
