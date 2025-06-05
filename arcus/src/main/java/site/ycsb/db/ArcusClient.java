@@ -1,5 +1,6 @@
 package site.ycsb.db;
 
+import net.spy.memcached.DefaultConnectionFactory;
 import net.spy.memcached.internal.GetFuture;
 import net.spy.memcached.internal.OperationFuture;
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import site.ycsb.*;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.net.InetSocketAddress;
 import java.text.MessageFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -51,7 +53,7 @@ public class ArcusClient extends DB {
 
 
   @Override
-  public void init() throws DBException {
+  public void init() {
     arcusClient = createArcusClient();
     checkOperationStatus = Boolean.parseBoolean(
         getProperties().getProperty(CHECK_OPERATION_STATUS_PROPERTY,
@@ -65,8 +67,16 @@ public class ArcusClient extends DB {
   }
 
   protected net.spy.memcached.ArcusClient createArcusClient() {
-    return net.spy.memcached.ArcusClient
-        .createArcusClient("ncp-4c4-001:2181", "test");
+    DefaultConnectionFactory cf = new DefaultConnectionFactory();
+    ArrayList<InetSocketAddress> addrs = new ArrayList<>();
+    addrs.add(new InetSocketAddress("ncp-4c4-005", 11211));
+    net.spy.memcached.ArcusClient res = null;
+    try {
+      res = new net.spy.memcached.ArcusClient(cf, addrs);
+    } catch (IOException e) {
+      logger.error(e);
+    }
+    return res;
   }
 
   @Override
