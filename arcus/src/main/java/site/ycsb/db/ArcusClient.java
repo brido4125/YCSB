@@ -69,7 +69,7 @@ public class ArcusClient extends DB {
   protected net.spy.memcached.ArcusClient createArcusClient() {
     DefaultConnectionFactory cf = new DefaultConnectionFactory();
     ArrayList<InetSocketAddress> addrs = new ArrayList<>();
-    addrs.add(new InetSocketAddress("ncp-4c4-005", 11211));
+    addrs.add(new InetSocketAddress("ncp-4c4-005", 4125));
     net.spy.memcached.ArcusClient res = null;
     try {
       res = new net.spy.memcached.ArcusClient(cf, addrs);
